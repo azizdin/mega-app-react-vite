@@ -5,7 +5,7 @@ repositories for multiple simple app using next js
 Next.js
 Tailwind CSS
 ## File structure
-````
+```
 src
 ├── common
 │   ├── components
@@ -32,4 +32,4 @@ src
     ├── api
     │   └── hello.ts
     └── index.tsx
-    ````
+    ```
