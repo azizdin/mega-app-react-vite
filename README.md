@@ -32,7 +32,6 @@ src
     ├── api
     │   └── hello.ts
     └── index.tsx
-    
 ```
-
-    ## others...
+    
+ ## others...
