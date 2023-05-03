@@ -15,10 +15,6 @@ src
 │   └── styles
 │       
 ├── modules
-│   ├── home
-│   │   ├── Home.module.css
-│   │   ├── Home.tsx
-│   │   └── index.ts
 │   ├── todo
 │   │   ├── Todo.module.css
 │   │   ├── Todo.tsx
@@ -28,9 +24,14 @@ src
 │       ├── Note.tsx
 │       └── index.ts
 └── pages
-    ├── _app.tsx
     ├── api
     │   └── hello.ts
+    ├── home
+    │   ├── Home.module.css
+    │   ├── Home.tsx
+    │   └── index.ts
+    ├── _app.tsx
+    ├── documents.tsx
     └── index.tsx
 ```
     
