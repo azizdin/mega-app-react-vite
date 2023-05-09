@@ -1,20 +1,20 @@
-## Mega-app
-
+## nextjs-app
 repositories for multiple simple app using next js
 
-## Features
+## Tech used
+Next.js
+Tailwind CSS
 
+## Instruction
+- clone the repo
+- run "npm install"
+
+## Features
 - [ ] navigation
 - [ ] todo
 - [ ] note
 
-## Tech used
-
-Next.js
-Tailwind CSS
-
 ## File structure
-
 ```
 src
 ├── common
