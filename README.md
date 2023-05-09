@@ -2,4 +2,5 @@
 
 repositories for multiple simple app
 
-- [ ] file structure
+- [x] file structure
+
