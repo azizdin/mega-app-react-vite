@@ -5,13 +5,13 @@ type Props = {};
 
 export const Home = (props: Props) => {
   const menuList = [
-    { name: "note", description: "", link: "" },
-    { name: "todo", description: "", link: "" },
+    { name: "note", description: "", link: "/note" },
+    { name: "todo", description: "", link: "/todo" },
     { name: "project3", description: "", link: "" },
   ];
   return (
     <>
-      <div>Home</div>
+      <h1 className="">Home</h1>
       <div>
         <Menu.SimpleSideMenu menuList={menuList} />
       </div>
