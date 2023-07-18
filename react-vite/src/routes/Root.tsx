@@ -1,25 +1,16 @@
 import { Outlet, Link } from "react-router-dom";
+import Sidebar from "../components/navbar/Sidebar";
+import { NavLinkItem } from "../data/NavLinkItem";
 const Root = () => {
   return (
-    <>
-      <div>
-        <h1>mega app</h1>
-        <ul className="header">
-          <li>
-            <Link to={`home`}>Home</Link>
-          </li>
-          <li>
-            <a href="/stuff">Stuff</a>
-          </li>
-          <li>
-            <a href="/contact">Contact</a>
-          </li>
-        </ul>
-      </div>
-      <div>
+    <div className="flex">
+      <aside className="">
+        <Sidebar title="Mega App" linkData={NavLinkItem}></Sidebar>
+      </aside>
+      <main>
         <Outlet />
-      </div>
-    </>
+      </main>
+    </div>
   );
 };
 
