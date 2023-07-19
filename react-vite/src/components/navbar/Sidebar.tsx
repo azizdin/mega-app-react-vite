@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, To } from "react-router-dom";
+import { Link, To, NavLink } from "react-router-dom";
 import "./sidebar.css";
 
 type LinkItem = {
@@ -16,14 +16,18 @@ type Props = {
 const Sidebar = (props: Props) => {
   const newLinkData: JSX.Element[] = [];
 
+  const navLinkCssClasses = ({ isActive }: { isActive: boolean }): string => {
+    return `p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 ${
+      isActive ? " text-blue-600 hover:text-white " : " text-white"
+    }`;
+  };
+
   props.linkData?.forEach((item: LinkItem) => {
     const { url, label } = item;
     newLinkData.push(
-      <div className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
-        <li className="text-[15px] ml-4 text-gray-200 font-bold">
-          <Link to={url as To}>{label}</Link>
-        </li>
-      </div>
+      <NavLink className={navLinkCssClasses} to={url as To}>
+        <li className="text-lg ml-4 font-bold ">{label}</li>
+      </NavLink>
     );
   });
 
