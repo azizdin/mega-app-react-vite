@@ -1,5 +1,5 @@
-import Home from "@/pages/home/Home";
-import Contact from "@/pages/contact/Contact";
+import Home from "@pages/home/Home";
+import Contact from "@pages/contact/Contact";
 
 export const NavLinkItem = [
   {
