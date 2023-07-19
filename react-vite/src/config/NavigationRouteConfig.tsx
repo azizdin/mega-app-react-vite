@@ -1,14 +1,14 @@
 import Home from "@pages/home/Home";
-import Contact from "@pages/contact/Contact";
+import Todo from "@/pages/todo/Todo";
 
-export const NavLinkItem = [
+export const NavLinkData = [
   {
     url: "home",
     label: "Home",
   },
   {
-    url: "contact",
-    label: "Contact",
+    url: "todo",
+    label: "Todo",
   },
 ];
 
@@ -18,7 +18,7 @@ export const browserRouterChildrenData = [
     element: <Home />,
   },
   {
-    path: "/contact",
-    element: <Contact />,
+    path: "/todo",
+    element: <Todo />,
   },
 ];

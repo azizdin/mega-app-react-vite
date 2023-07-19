@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./main.css";
 import ErrorPage from "./error/ErrorPage";
 import Root from "@/routes/Root";
-import { browserRouterChildrenData } from "@data/NavigationData";
+import { browserRouterChildrenData } from "@config/NavigationRouteConfig";
 const router = createBrowserRouter([
   {
     path: "/",
