@@ -1,4 +1,4 @@
-const home = () => {
+const Home = () => {
   return (
     <div className="">
       {" "}
@@ -9,4 +9,4 @@ const home = () => {
   );
 };
 
-export default home;
+export default Home;
