@@ -13,6 +13,7 @@
       "@pages/*": ["pages/*"],
       "@data/*": ["data/*"],
       "@config/*": ["config/*"],
+      "@modules/*": ["modules/*"],
     },
 
     /* Bundler mode */

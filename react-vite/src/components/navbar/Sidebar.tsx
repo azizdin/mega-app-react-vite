@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, To, NavLink } from "react-router-dom";
+import { To, NavLink } from "react-router-dom";
 import "./sidebar.css";
 
 type LinkItem = {

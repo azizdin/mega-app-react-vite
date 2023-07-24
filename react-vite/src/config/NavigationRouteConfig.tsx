@@ -1,5 +1,5 @@
 import Home from "@pages/home/Home";
-import Todo from "@/pages/todo/Todo";
+import Todo from "@modules/todo/Todo";
 
 export const NavLinkData = [
   {
