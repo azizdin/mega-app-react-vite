@@ -1,5 +1,5 @@
 import React from "react";
-import { To, NavLink } from "react-router-dom";
+import { NavLink, To } from "react-router-dom";
 import "./simpletopnavbar.css";
 
 type LinkItem = {
