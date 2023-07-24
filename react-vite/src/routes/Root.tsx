@@ -1,13 +1,16 @@
 import { Outlet } from "react-router-dom";
-import Sidebar from "@components/navbar/Sidebar";
+import SimpleTopNavBar from "@components/navbar/SimpleTopNavbar";
 import { NavLinkData } from "@config/NavigationRouteConfig";
 const Root = () => {
   return (
-    <div className="flex">
-      <aside className="">
-        <Sidebar title="Mega App" linkData={NavLinkData}></Sidebar>
-      </aside>
-      <main>
+    <div>
+      <div>
+        <SimpleTopNavBar
+          title="Mega App"
+          linkData={NavLinkData}
+        ></SimpleTopNavBar>
+      </div>
+      <main role="main">
         <Outlet />
       </main>
     </div>
