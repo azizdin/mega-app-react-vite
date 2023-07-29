@@ -1,6 +1,6 @@
 <template>
 	<div class="flex justify-center items-center h-screen px-4 sm:px-6 md:px-10 bg-slate-800">
-		<video src="@/assets/videos/falling-stars.mp4" autoplay muted class="fixed left-0 top-0 h-screen w-full object-cover"></video>
+		<video src="@/assets/videos/falling-stars.mp4" autoplay muted loop class="fixed left-0 top-0 h-screen w-full object-cover"></video>
         <div class="w-full max-w-sm z-10">
             <Header/>
 			<div class="p-6 bg-sky-100/60 rounded-md">
