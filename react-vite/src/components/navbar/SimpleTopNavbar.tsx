@@ -40,13 +40,13 @@ const SimpleTopNavbar = (props: Props) => {
             {props.title}
           </span>
         </div>
-        <div className="block lg:hidden">
-          <button className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
+        <div className="block lg:hidden group">
+          <button className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 group-hover:text-white group-hover:border-white">
             {/* hamburger icon */}
             <div className="space-y-2">
-              <div className="w-8 h-0.5 bg-white border-white"></div>
-              <div className="w-8 h-0.5 bg-white border-white"></div>
-              <div className="w-8 h-0.5 bg-white border-white"></div>
+              <div className="w-8 h-0.5 bg-teal-400 border-teal-400 group-hover:bg-white group-hover:border-white"></div>
+              <div className="w-8 h-0.5 bg-teal-400 border-teal-400 group-hover:bg-white group-hover:border-white"></div>
+              <div className="w-8 h-0.5 bg-teal-400 border-teal-400 group-hover:bg-white group-hover:border-white"></div>
             </div>
           </button>
         </div>
