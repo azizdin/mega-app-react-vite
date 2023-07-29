@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./todo.css";
 type Todo = {
   id: number;
   task: string;
@@ -63,21 +64,38 @@ function Todo() {
 
   return (
     <div className=" ">
-      <div className=" p-4 bg-slate-500 w-auto mx-auto">
-        <form onSubmit={handleFormSubmit}>
-          <input type="text" name="task" value={task} onChange={handleInput} />
-          <button type="submit">Submit</button>
+      <div className=" w-full max-w-xs">
+        <form
+          className="grid gap-4 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+          onSubmit={handleFormSubmit}
+        >
+          <input
+            className="todoTextField"
+            type="text"
+            name="task"
+            value={task}
+            onChange={handleInput}
+          />
+          <button className="todoBtn" type="submit">
+            Submit
+          </button>
         </form>
         <ul>
           {todos.map((todo) => (
             <li key={todo.id}>
               {todo.task}
               <input
+                className="regularCheckbox"
                 type="checkbox"
                 checked={todo.isCompleted}
                 onChange={() => handleChangeChecked(todo)}
               />
-              <button onClick={() => handleDelete(todo.id)}>Remove</button>
+              <button
+                className="negativeBtn"
+                onClick={() => handleDelete(todo.id)}
+              >
+                Remove
+              </button>
             </li>
           ))}
         </ul>

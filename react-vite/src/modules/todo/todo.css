@@ -1,0 +1,38 @@
+
+.todoBtn{
+    @apply font-bold py-2 px-4 rounded bg-blue-500 text-white
+}
+.todoBtn:hover{
+    @apply bg-blue-700
+}
+
+.todoTextField{
+    @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight 
+}
+
+.todoTextField:focus{
+    @apply outline-none
+}
+
+.negativeBtn{
+    @apply font-bold py-2 px-4 rounded bg-red-500 text-white
+}
+.negativeBtn:hover{
+    @apply bg-red-700
+}
+
+.regularCheckbox{
+    @apply relative appearance-none shrink-0 w-4 h-4 border-2 border-green-200 rounded-sm mt-1 bg-white
+}
+
+.regularCheckbox:focus{
+    @apply outline-none ring-offset-0 ring-1 ring-blue-100
+}
+
+.regularCheckbox:checked{
+    @apply bg-green-500 border-0
+}
+
+.regularCheckbox:disabled{
+    @apply border-gray-400 bg-gray-400
+}
