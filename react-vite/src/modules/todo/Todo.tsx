@@ -63,40 +63,44 @@ function Todo() {
   };
 
   return (
-    <div className=" ">
-      <div className=" w-full max-w-xs">
-        <form
-          className="grid gap-4 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-          onSubmit={handleFormSubmit}
-        >
-          <input
-            className="todoTextField"
-            type="text"
-            name="task"
-            value={task}
-            onChange={handleInput}
-          />
-          <button className="todoBtn" type="submit">
-            Submit
-          </button>
+    <div className="  w-full max-w-md mx-auto">
+      <div className=" grid gap-4 bg-white shadow-md rounded px-5 pt-6 pb-6 mb-4 ">
+        <form className="" onSubmit={handleFormSubmit}>
+          <div className=" flex gap-3 ">
+            {" "}
+            <input
+              className="todoTextField"
+              type="text"
+              name="task"
+              value={task}
+              onChange={handleInput}
+            />
+            <button className="todoAddBtn max-w-min" type="submit">
+              add
+            </button>
+          </div>
         </form>
         <ul>
           {todos.map((todo) => (
-            <li key={todo.id}>
-              {todo.task}
-              <input
-                className="regularCheckbox"
-                type="checkbox"
-                checked={todo.isCompleted}
-                onChange={() => handleChangeChecked(todo)}
-              />
-              <button
-                className="negativeBtn"
-                onClick={() => handleDelete(todo.id)}
-              >
-                Remove
-              </button>
-            </li>
+            <div className="">
+              <li key={todo.id}>
+                <div className=" flex gap-3 py-1">
+                  <input
+                    className="regularCheckbox"
+                    type="checkbox"
+                    checked={todo.isCompleted}
+                    onChange={() => handleChangeChecked(todo)}
+                  />
+                  <div className=" w-full break-normal ">{todo.task}</div>
+                  <button
+                    className="negativeBtn max-w-m"
+                    onClick={() => handleDelete(todo.id)}
+                  >
+                    Remove
+                  </button>
+                </div>
+              </li>
+            </div>
           ))}
         </ul>
       </div>
