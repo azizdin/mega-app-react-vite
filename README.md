@@ -5,17 +5,17 @@ This repository is a mono repo that contains multiple projects, each residing in
 
 1. **nextjs**:
    - Description: This project folder contains multiple simple Next.js applications.
-   - Technology: Next.js
+   - Technology: Next.js, Tailwindcss
    - Language: TypeScript
 
 2. **nuxt**:
    - Description: This project folder contains multiple simple Nuxt.js applications.
-   - Technology: Nuxt.js
+   - Technology: Nuxt.js, Tailwindcss
    - Language: JavaScript
 
 3. **react-vite**:
    - Description: This project folder contains multiple simple React applications built with Vite.
-   - Technology: React with Vite
+   - Technology: React with Vite, Tailwindcss
    - Language: TypeScript
 
 ## Purpose
