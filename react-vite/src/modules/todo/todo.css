@@ -28,7 +28,7 @@
 }
 
 .regularCheckbox{
-    @apply relative appearance-none shrink-0 w-4 h-4 border-2 border-green-200 rounded-sm mt-1 bg-white
+    @apply relative shrink-0 w-4 h-4 border-2 border-green-200 rounded-sm mt-1 bg-white
 }
 
 .regularCheckbox:focus{
@@ -36,7 +36,7 @@
 }
 
 .regularCheckbox:checked{
-    @apply bg-green-500 border-0
+    @apply accent-green-500 border-0
 }
 
 .regularCheckbox:disabled{
