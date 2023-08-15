@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import SimpleTopNavBar from "@components/navbar/SimpleTopNavbar";
+import SimpleTopNavBar from "@components/navbar/simple-top-navbar/SimpleTopNavbar";
 import { NavLinkData } from "@config/NavigationRouteConfig";
 const Root = () => {
   return (

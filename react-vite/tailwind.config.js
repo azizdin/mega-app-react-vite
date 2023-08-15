@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+// prettier-ignore
 export default {
   content: [
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
@@ -7,7 +8,11 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'primary': "#075985",
+      },
+    },
   },
   plugins: [],
 };
