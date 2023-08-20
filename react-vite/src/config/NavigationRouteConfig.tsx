@@ -1,10 +1,11 @@
-import Home from "@pages/home/Home";
+// import Home from "@pages/home/Home";
 import Todo from "@modules/todo/Todo";
+import NoteApp from "@/modules/note-app/NoteApp";
 
 export const NavLinkData = [
   {
-    url: "home",
-    label: "Home",
+    url: "note-app",
+    label: "NoteApp",
   },
   {
     url: "todo",
@@ -14,8 +15,8 @@ export const NavLinkData = [
 
 export const browserRouterChildrenData = [
   {
-    path: "/home",
-    element: <Home />,
+    path: "/note-app",
+    element: <NoteApp />,
   },
   {
     path: "/todo",
