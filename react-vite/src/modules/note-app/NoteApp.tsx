@@ -1,57 +1,33 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect, useRef } from "react";
+import { Assets } from "@/assets/assets";
 const NoteApp: React.FC = () => {
   interface Note {
     id: number;
     content: string;
-    isEditing: boolean;
-    originalContent: string;
   }
 
   const [notes, setNotes] = useState<Note[]>([]);
-  const [newNote, setNewNote] = useState<string>("");
+  const [newNoteContent, setNewNoteContent] = useState<string>("");
+  const [isAddButtonVisible, setIsAddButtonVisible] = useState<boolean>(false);
 
-  const handleNoteChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNewNote(event.target.value);
+  const lastNoteRef = useRef<HTMLTextAreaElement>(null);
+
+  const handleNoteContentChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    setNewNoteContent(event.target.value);
   };
 
   const handleAddNote = () => {
-    if (newNote.trim() === "") return;
+    if (newNoteContent.trim() === "") return;
 
     const newNoteItem: Note = {
       id: Date.now(),
-      content: newNote,
-      isEditing: false,
-      originalContent: newNote,
+      content: newNoteContent,
     };
 
     setNotes([...notes, newNoteItem]);
-    setNewNote("");
-  };
-
-  const handleEditNote = (id: number) => {
-    const updatedNotes = notes.map((note) =>
-      note.id === id ? { ...note, isEditing: true } : note
-    );
-    setNotes(updatedNotes);
-  };
-
-  const handleSaveNote = (id: number) => {
-    const updatedNotes = notes.map((note) =>
-      note.id === id
-        ? { ...note, isEditing: false, originalContent: note.content }
-        : note
-    );
-    setNotes(updatedNotes);
-  };
-
-  const handleCancelEdit = (id: number) => {
-    const updatedNotes = notes.map((note) =>
-      note.id === id
-        ? { ...note, isEditing: false, content: note.originalContent }
-        : note
-    );
-    setNotes(updatedNotes);
+    setNewNoteContent("");
   };
 
   const handleDeleteNote = (id: number) => {
@@ -59,93 +35,67 @@ const NoteApp: React.FC = () => {
     setNotes(updatedNotes);
   };
 
-  const handleSaveToJson = () => {
-    const jsonNotes = JSON.stringify(notes);
-    const blob = new Blob([jsonNotes], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "notes.json";
-    link.click();
-  };
-
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        try {
-          const parsedNotes = JSON.parse(e.target?.result as string);
-          setNotes(parsedNotes);
-        } catch (error) {
-          console.error("Error parsing JSON:", error);
-        }
-      };
-      reader.readAsText(file);
-    }
-  };
+  useEffect(() => {
+    setIsAddButtonVisible(newNoteContent.trim() !== "");
+  }, [newNoteContent]);
 
   return (
-    <div>
-      <div>
-        <h1>Note Taking App</h1>
-        <div>
-          <input
-            type="text"
-            placeholder="Enter your note"
-            value={newNote}
-            onChange={handleNoteChange}
-          />
-          <button onClick={handleAddNote}>Add Note</button>
-        </div>
-        <ul className="">
-          <div>
-            {notes.map((note) => (
-              <div className="">
-                <li key={note.id}>
-                  {note.isEditing ? (
-                    <div>
-                      <input
-                        type="text"
-                        value={note.content}
-                        onChange={(e) => {
-                          const updatedContent = e.target.value;
-                          const updatedNotes = notes.map((n) =>
-                            n.id === note.id
-                              ? { ...n, content: updatedContent }
-                              : n
-                          );
-                          setNotes(updatedNotes);
-                        }}
-                      />
-                      <button onClick={() => handleSaveNote(note.id)}>
-                        Save
-                      </button>
-                      <button onClick={() => handleCancelEdit(note.id)}>
-                        Cancel
-                      </button>
-                    </div>
-                  ) : (
-                    <div>
-                      {note.content}
-                      <button onClick={() => handleEditNote(note.id)}>
-                        Edit
-                      </button>
-                      <button onClick={() => handleDeleteNote(note.id)}>
-                        Delete
-                      </button>
-                    </div>
-                  )}
-                </li>
-              </div>
-            ))}
+    <div className="">
+      <ul className="">
+        <div className="flex flex-wrap gap-4 p-4">
+          {notes.map((note) => (
+            <div
+              className=" relative bg-amber-400 rounded shadow-md p-2 w-72"
+              key={note.id}
+            >
+              <li className="">
+                <div className="w-full h-64 overflow-hidden">
+                  <textarea
+                    className="bg-amber-400 resize-none w-full h-full overflow-hidden outline-none"
+                    value={note.content}
+                    onChange={(e) => {
+                      const updatedContent = e.target.value;
+                      const updatedNotes = notes.map((n) =>
+                        n.id === note.id ? { ...n, content: updatedContent } : n
+                      );
+                      setNotes(updatedNotes);
+                    }}
+                  />
+                </div>
+                <button
+                  className="absolute bg-red-500 hover:bg-red-800 shadow-sm p-0 pr-1 w-6 h-6 rounded-full -top-3 -right-3"
+                  onClick={() => handleDeleteNote(note.id)}
+                >
+                  <Assets.IconSVG.XMark />
+                </button>
+              </li>
+            </div>
+          ))}
+          <div className=" relative bg-amber-400 rounded shadow-md p-2 w-72">
+            <div className="w-full h-64 overflow-hidden">
+              <textarea
+                className=" bg-amber-400 resize-none w-full h-full overflow-hidden outline-none"
+                placeholder="Enter note content"
+                value={newNoteContent}
+                onChange={handleNoteContentChange}
+                ref={lastNoteRef}
+              />
+            </div>
           </div>
-        </ul>
-        <button onClick={handleSaveToJson}>Save to JSON</button>
-        <div className="">
-          <input type="file" accept=".json" onChange={handleFileChange} />
+          {isAddButtonVisible && (
+            <button
+              className="relative bg-amber-500 hover:bg-amber-600 rounded shadow-md w-72 p-2"
+              onClick={handleAddNote}
+            >
+              <div className="h-64 flex items-center justify-center">
+                <span className="inline-block text-3xl text-white font-semibold">
+                  Add Note
+                </span>
+              </div>
+            </button>
+          )}
         </div>
-      </div>
+      </ul>
     </div>
   );
 };
