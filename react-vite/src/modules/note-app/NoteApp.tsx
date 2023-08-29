@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Assets } from "@/assets/assets";
+import { Assets } from "@/assets/Assets";
 const NoteApp: React.FC = () => {
   interface Note {
     id: number;
