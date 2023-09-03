@@ -1,6 +1,6 @@
 // import Home from "@pages/home/Home";
 import Todo from "@modules/todo/Todo";
-import NoteApp from "@/modules/note-app/NoteApp";
+import NoteApp from "@/modules/noteApp/Main";
 
 export const NavLinkData = [
   {
