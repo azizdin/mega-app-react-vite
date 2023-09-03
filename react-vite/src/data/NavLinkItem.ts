@@ -4,7 +4,11 @@ export const NavLinkItem = [
     label: "Home",
   },
   {
-    url: "contact",
-    label: "Contact",
+    url: "todo",
+    label: "Todo",
+  },
+  {
+    url: "note-app",
+    label: "NoteApp",
   },
 ];

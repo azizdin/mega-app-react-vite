@@ -1,13 +1,14 @@
 import { useState } from "react";
 import "./todo.css";
-type Todo = {
+
+type Task = {
   id: number;
   task: string;
   isCompleted: boolean;
 };
 
 function Todo() {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const [todos, setTodos] = useState<Task[]>([]);
   const [task, setTask] = useState<string>("");
 
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,58 +18,39 @@ function Todo() {
   const handleFormSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
-    // check if the value is empty
     if (task.trim().length === 0) {
       alert("Please enter a value!");
       return;
     }
 
-    // create a new todo
-    const todo: Todo = {
+    const newTask: Task = {
       id: Date.now(),
       task: task,
       isCompleted: false,
     };
 
-    // add todo to the state
-    setTodos([todo, ...todos]);
-
-    // clear the value of task
+    setTodos((prevTodos) => [newTask, ...prevTodos]);
     setTask("");
   };
 
-  const handleChangeChecked = (todo: Todo) => {
-    // index of the todo
-    const index = todos.indexOf(todo);
-
-    // change todo completed status
-    todo.isCompleted = !todo.isCompleted;
-
-    // then we need to replace it with one in todos
-    todos.splice(index, 1, todo);
-
-    // update the state
-    setTodos([...todos]);
+  const handleChangeChecked = (todo: Task) => {
+    const updatedTodos = todos.map((t) =>
+      t.id === todo.id ? { ...t, isCompleted: !t.isCompleted } : t
+    );
+    setTodos(updatedTodos);
   };
 
   const handleDelete = (id: number) => {
-    // find index of todo from id
-    const index = todos.findIndex((todo) => todo.id === id);
-
-    // remove todo
-    todos.splice(index, 1);
-
-    // update the state
-    setTodos([...todos]);
+    const updatedTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(updatedTodos);
   };
 
   return (
-    <div className=" flex h-screen bg-gray-200 ">
-      <div className="  w-full max-w-md m-auto">
-        <div className=" grid gap-4 bg-white shadow-md rounded px-5 pt-6 pb-6 mb-4 ">
-          <form className="" onSubmit={handleFormSubmit}>
-            <div className=" flex gap-3 ">
-              {" "}
+    <div className="flex h-screen bg-gray-200">
+      <div className="w-full max-w-md m-auto">
+        <div className="grid gap-4 bg-white shadow-md rounded px-5 pt-6 pb-6 mb-4">
+          <form onSubmit={handleFormSubmit}>
+            <div className="flex gap-3">
               <input
                 className="todoTextField"
                 type="text"
@@ -83,25 +65,23 @@ function Todo() {
           </form>
           <ul>
             {todos.map((todo) => (
-              <div className="">
-                <li key={todo.id}>
-                  <div className=" flex gap-3 py-1">
-                    <input
-                      className="regularCheckbox"
-                      type="checkbox"
-                      checked={todo.isCompleted}
-                      onChange={() => handleChangeChecked(todo)}
-                    />
-                    <div className=" w-full break-normal ">{todo.task}</div>
-                    <button
-                      className="negativeBtn"
-                      onClick={() => handleDelete(todo.id)}
-                    >
-                      X
-                    </button>
-                  </div>
-                </li>
-              </div>
+              <li key={todo.id}>
+                <div className="flex gap-3 py-1">
+                  <input
+                    className="regularCheckbox"
+                    type="checkbox"
+                    checked={todo.isCompleted}
+                    onChange={() => handleChangeChecked(todo)}
+                  />
+                  <div className="w-full break-normal">{todo.task}</div>
+                  <button
+                    className="negativeBtn"
+                    onClick={() => handleDelete(todo.id)}
+                  >
+                    X
+                  </button>
+                </div>
+              </li>
             ))}
           </ul>
         </div>
