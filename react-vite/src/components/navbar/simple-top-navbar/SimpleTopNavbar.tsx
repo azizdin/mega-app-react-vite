@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink, To } from "react-router-dom";
+import { Link, NavLink, To } from "react-router-dom";
 import "./simpletopnavbar.css";
 import { myIcon } from "./myIcon";
 
@@ -48,7 +48,7 @@ const SimpleTopNavbar = (props: Props) => {
               <div className="flex items-center">
                 {/* icon here */}
                 <span className="font-semibold text-gray-500 text-lg">
-                  {props.title}
+                  <Link to="/">{props.title}</Link>
                 </span>
               </div>
               {/* navbar item */}
@@ -58,12 +58,8 @@ const SimpleTopNavbar = (props: Props) => {
             </div>
             {/* navbar item */}
             <div className="hidden md:flex items-center space-x-3">
-              <a className="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300">
-                hello
-              </a>
-              <a className="py-2 px-2 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300">
-                yellow
-              </a>
+              <a className="mainNavBtn">hello</a>
+              <a className="secondNavBtn">yellow</a>
             </div>
             {/* hamburger */}
             <div className="flex items-center md:hidden group">
@@ -74,7 +70,7 @@ const SimpleTopNavbar = (props: Props) => {
           </div>
         </div>
         <div
-          className={`flex  flex-col items-center mobile-menu md:hidden ${
+          className={`flex  flex-col items-center md:hidden ${
             isExpand ? "" : "hidden"
           }`}
         >

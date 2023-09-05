@@ -1,49 +1,15 @@
-import { useState } from "react";
+import { Assets } from "@/assets/Assets";
+import { useTodoViewModel } from "./TodoViewModel"; // Import your ViewModel
 import "./todo.css";
-
-type Task = {
-  id: number;
-  task: string;
-  isCompleted: boolean;
-};
-
-function Todo() {
-  const [todos, setTodos] = useState<Task[]>([]);
-  const [task, setTask] = useState<string>("");
-
-  const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTask(event.target.value);
-  };
-
-  const handleFormSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-
-    if (task.trim().length === 0) {
-      alert("Please enter a value!");
-      return;
-    }
-
-    const newTask: Task = {
-      id: Date.now(),
-      task: task,
-      isCompleted: false,
-    };
-
-    setTodos((prevTodos) => [newTask, ...prevTodos]);
-    setTask("");
-  };
-
-  const handleChangeChecked = (todo: Task) => {
-    const updatedTodos = todos.map((t) =>
-      t.id === todo.id ? { ...t, isCompleted: !t.isCompleted } : t
-    );
-    setTodos(updatedTodos);
-  };
-
-  const handleDelete = (id: number) => {
-    const updatedTodos = todos.filter((todo) => todo.id !== id);
-    setTodos(updatedTodos);
-  };
+function TodoView() {
+  const {
+    todos,
+    task,
+    handleInput,
+    handleFormSubmit,
+    handleChangeChecked,
+    handleDelete,
+  } = useTodoViewModel(); // Call the ViewModel function
 
   return (
     <div className="flex h-screen bg-gray-200">
@@ -78,7 +44,7 @@ function Todo() {
                     className="negativeBtn"
                     onClick={() => handleDelete(todo.id)}
                   >
-                    X
+                    <Assets.IconSVG.XMark />
                   </button>
                 </div>
               </li>
@@ -90,4 +56,4 @@ function Todo() {
   );
 }
 
-export default Todo;
+export default TodoView;

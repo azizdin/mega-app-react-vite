@@ -1,0 +1,15 @@
+.mainNavBtn{
+    @apply py-2 px-2 font-medium text-gray-500 rounded transition duration-300
+}
+
+.mainNavBtn:hover {
+    @apply text-white bg-green-500
+}
+
+.secondNavBtn{
+    @apply py-2 px-2 font-medium text-white bg-green-500 rounded transition duration-300
+}
+
+.secondNavBtn:hover {
+    @apply bg-green-400
+}

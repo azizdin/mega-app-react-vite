@@ -1,8 +1,10 @@
 // import Home from "@pages/home/Home";
-import Todo from "@modules/todo/Todo";
+import Todo from "@/modules/todo/Main";
 import NoteApp from "@/modules/noteApp/Main";
+import Home from "@/pages/home/Home";
 
-export const NavLinkData = [
+//navigation tab
+const NavLinkData = [
   {
     url: "note-app",
     label: "NoteApp",
@@ -13,7 +15,12 @@ export const NavLinkData = [
   },
 ];
 
-export const browserRouterChildrenData = [
+//route
+const browserRouterChildrenData = [
+  {
+    path: "",
+    element: <Home />,
+  },
   {
     path: "/note-app",
     element: <NoteApp />,
@@ -23,3 +30,5 @@ export const browserRouterChildrenData = [
     element: <Todo />,
   },
 ];
+
+export { NavLinkData, browserRouterChildrenData };
