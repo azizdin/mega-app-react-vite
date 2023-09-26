@@ -1,0 +1,18 @@
+.stickyNote{
+    @apply relative bg-amber-400 rounded shadow-md p-2 w-72
+}
+.noteInput{
+    @apply bg-inherit resize-none w-full h-full overflow-hidden outline-none
+}
+.addBtn{
+    @apply absolute bg-green-500 shadow-sm p-0 pr-1 w-6 h-6 rounded-full bottom-3 left-3
+}
+.addBtn:hover{
+    @apply bg-green-800
+}
+.closeBtn{
+    @apply absolute bg-red-500 shadow-sm p-0 pr-1 w-6 h-6 rounded-full -top-3 -left-3
+}
+.closeBtn:hover{
+    @apply bg-red-800
+}
